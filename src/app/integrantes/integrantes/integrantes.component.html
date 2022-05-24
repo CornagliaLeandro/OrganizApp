@@ -1,0 +1,32 @@
+
+
+<div>
+
+<h1>Peña locaaaaa</h1>
+<hr>
+
+
+<div>
+    <form (ngSubmit)="agregar()" action="">
+
+        <input type="text" 
+        placeholder="Nombre" 
+        name="nombre" 
+        [(ngModel)]="nuevaPersona.nombre">
+
+        <button type="submit">Agregar</button>
+
+
+    </form>
+   
+</div>
+
+<div>
+    <ul>
+        <li *ngFor="let i of integrantes "> {{ i.nombre }} </li>
+    </ul>
+</div>
+
+
+</div>
+
