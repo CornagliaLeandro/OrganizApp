@@ -11,7 +11,8 @@ export class IntegrantesComponent{
 
   @Input()
   nuevaPersona: Persona ={
-    nombre: ''
+    nombre: '',
+    tareas: []
   }
 
   
@@ -27,7 +28,8 @@ agregar(){
   if(this.nuevaPersona.nombre.trim().length === 0){ return}
   this.intService.agregarP(this.nuevaPersona)
   this.nuevaPersona = {
-    nombre: ''
+    nombre: '',
+    tareas: []
   }
   
 }

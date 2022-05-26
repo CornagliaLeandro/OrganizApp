@@ -1,0 +1,37 @@
+
+
+<div>
+
+
+    <hr>
+
+    <h2>Tareas a realizar</h2>
+    
+    
+    <div>
+        <form (ngSubmit)="agregar()" action="">
+    
+            <input type="text" 
+            placeholder="Tarea" 
+            name="tarea" 
+            [(ngModel)]="nuevaTarea"
+            >
+    
+            <button type="submit">Agregar</button>
+    
+    
+        </form>
+       
+    </div>
+    
+    <div>
+        <ul>
+           <li *ngFor="let t of getTareas" >{{ t }}</li>
+        </ul>
+    </div>
+
+    
+    
+    
+    </div>
+    

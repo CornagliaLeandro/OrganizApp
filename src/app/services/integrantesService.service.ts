@@ -5,19 +5,19 @@ import { Persona } from "../interfaces/persona.interface";
 export class IntegrantesService{
 
     integrantes: Persona[] = [
-        {
-            nombre:'Leandro'
-        },
-        {
-            nombre:'Federico'
-        },
-        {
-            nombre:'Fabricio'
-        }
+        // {
+        //     nombre:'Leandro'
+        // },
+        // {
+        //     nombre:'Federico'
+        // },
+        // {
+        //     nombre:'Fabricio'
+        // }
     ]
 
     get getIntegrantes(): Persona[]{
-        return [...this.integrantes]
+        return this.integrantes
     }
 
     constructor(){
