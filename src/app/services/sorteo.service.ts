@@ -11,6 +11,7 @@ export class SorteoService{
   indice: number = 0;
   sorteado: Persona[] = []
   tareas: string[] = this.ts.getTareas
+  aux: boolean = false;
 
   intPrueba: Persona[] = this.integrantes
   tarPrueba: string[] = this.tareas
@@ -31,62 +32,72 @@ export class SorteoService{
         this.integrantes = this.shuffleArray(this.integrantes)
         this.tareas = this.shuffleArray(this.tareas)
 
-    if (this.integrantes.length >= this.tareas.length) {
+   
+   
+        if (this.integrantes.length >= this.tareas.length) {
 
         console.log(this.integrantes.length - this.tareas.length);
         
         let resta = this.integrantes.length - this.tareas.length
         
         for(let i = 0; i <= resta ; i++){
+            
             this.tareas.push('sin asignar tarea')
+        
         }
         
+        for (let i = 0; i < this.integrantes.length; i++) {
 
-      
-
-      for (let i = 0; i < this.integrantes.length; i++) {
-
-         
-            this.integrantes[i].tareas.push(this.tareas[i])
-           
-        //   if(this.tareas[i].length === 0){
-        //       this.integrantes[i].tareas.push('Sin tarea asiganada')
-        //   }
-      }
-    //   for (const t of this.integrantes) {
-    //       if(t.tareas.length === 0){
-    //           this
-    //       }
-    //   }
-    //   for(let i = 0; i < this.integrantes.length; i++){
-    //       if(this.integrantes[i].tareas.length === 0){
-    //         this.integrantes[i].tareas.push('Sin tarea asiganada')
-    //       }
-    //   }
-    } else if ( this.integrantes.length < this.tareas.length){
-
-      for (let i  = 0; i < this.tareas.length  ; i++){
-
-        //   if(i === this.integrantes.length - 1){
-        //     this.integrantes[i].tareas.push(this.tareas[this.indice])
-        //     this.indice = i;
-        //     i = 0;
-        //   }else{
-        //     this.integrantes[i].tareas.push(this.tareas[i + this.indice + 1])
-        //   }
-        if( i > this.integrantes.length - 1){
-            this.indice = i;
-            i= 0
-        }
-        if( i <= this.integrantes.length -1 && this.indice === 0){
-            this.integrantes[i].tareas.push(this.tareas[i])
-        }else{
-            this.integrantes[i].tareas.push(this.tareas[i + this.indice])
-        }
+             this.integrantes[i].tareas.push(this.tareas[i])
         
+        }
 
-      }
-      
+    } else if ( this.tareas.length > this.integrantes.length ){
+
+    //     for (let i  = 0; i < this.tareas.length  ; i++){
+
+    //     if( i > this.integrantes.length - 1){
+    //         this.indice = i;
+    //         i= 0
+    //     }
+    //     if( i <= this.integrantes.length -1 && this.indice === 0){
+    //         this.integrantes[i].tareas.push(this.tareas[i])
+    //     }else{
+    //         this.integrantes[i].tareas.push(this.tareas[i + this.indice])
+    //     }
+    //   }
+            for (let i = 0; i < this.tareas.length ; i++) {
+                
+                if(i < this.integrantes.length && this.aux == false){
+                    this.integrantes[i].tareas.push(this.tareas[i])
+                    this.indice++
+                    console.log('por aca esta la ' + i);
+                    
+                }else if(this.indice === this.integrantes.length ){
+                    // this.indice = i;
+
+                    if(this.aux ==false){
+                        i= 0;
+                    }
+                    this.aux = true
+
+                    let res = this.tareas.length - this.integrantes.length
+
+                    for(let i = 0; i < res; i++ ){
+
+                        this.integrantes[i].tareas.push(this.tareas[i + this.indice])
+                    console.log('fuera del if' + this.tareas[i], this.indice);
+
+                    }
+                    
+                    
+                    
+                }
+                
+             
+                
+            }
+                
 
     }
     

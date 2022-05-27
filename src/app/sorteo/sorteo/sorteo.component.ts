@@ -14,6 +14,7 @@ import { SorteoService } from '../../services/sorteo.service';
 })
 export class SorteoComponent {
   sorteado: Persona[] = []
+  bot: boolean = false;
 
 
   constructor(private ts: TareasService, private is: IntegrantesService, private ss: SorteoService){}
@@ -26,6 +27,7 @@ export class SorteoComponent {
 
   sorteo(){
     this.ss.sortear()
+    this.bot = true;
   }
 
 }
