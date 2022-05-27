@@ -10,6 +10,7 @@ export class TareasComponent {
 
   nuevaTarea: string = '';
   tarea: string = ''
+  tareas: string[] = []
 
   constructor(private tareaService: TareasService){}
 
@@ -20,6 +21,7 @@ export class TareasComponent {
   agregar(){
 
     if(this.nuevaTarea.length === 0) { return }
+    this.tareas.push(this.nuevaTarea)
     this.tarea =  this.tareaService.agregarTarea(this.nuevaTarea).toString()
     this.nuevaTarea = '';
     

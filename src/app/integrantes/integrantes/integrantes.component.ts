@@ -15,6 +15,7 @@ export class IntegrantesComponent{
     tareas: []
   }
 
+  nombrePersona: string[] = []
   
   constructor( private intService: IntegrantesService) {  this.intService}
 
@@ -26,6 +27,7 @@ export class IntegrantesComponent{
 agregar(){
 
   if(this.nuevaPersona.nombre.trim().length === 0){ return}
+  this.nombrePersona.push(this.nuevaPersona.nombre)
   this.intService.agregarP(this.nuevaPersona)
   this.nuevaPersona = {
     nombre: '',

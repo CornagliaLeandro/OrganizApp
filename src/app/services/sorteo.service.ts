@@ -10,61 +10,87 @@ export class SorteoService{
   integrantes: Persona[] = this.it.getIntegrantes;
   indice: number = 0;
   sorteado: Persona[] = []
-  tareas: string[] = []
+  tareas: string[] = this.ts.getTareas
 
-
+  intPrueba: Persona[] = this.integrantes
+  tarPrueba: string[] = this.tareas
+  
 
   constructor(private ts: TareasService, private it: IntegrantesService) { this.ts = ts, this.it = it }
 
 
   shuffleArray(arreglo: any[]){
-    console.log(arreglo);
     
-    arreglo.sort(()=> Math.random() - 0.5);
-
-    
+    arreglo.sort(()=> Math.random() - 0.5);    
     return arreglo 
 }
 
   
   sortear() {
-
-    this.tareas = this.shuffleArray(this.ts.getTareas)
-    this.integrantes = this.shuffleArray(this.integrantes)
-  
+    
+        this.integrantes = this.shuffleArray(this.integrantes)
+        this.tareas = this.shuffleArray(this.tareas)
 
     if (this.integrantes.length >= this.tareas.length) {
 
+        console.log(this.integrantes.length - this.tareas.length);
+        
+        let resta = this.integrantes.length - this.tareas.length
+        
+        for(let i = 0; i <= resta ; i++){
+            this.tareas.push('sin asignar tarea')
+        }
+        
+
       
 
-      for (let i = 0; i < this.tareas.length; i++) {
+      for (let i = 0; i < this.integrantes.length; i++) {
 
-          if(this.tareas){
+         
             this.integrantes[i].tareas.push(this.tareas[i])
-          }else {
-            this.integrantes[i].tareas.push('Sin tarea asignada')
-          } 
+           
+        //   if(this.tareas[i].length === 0){
+        //       this.integrantes[i].tareas.push('Sin tarea asiganada')
+        //   }
       }
+    //   for (const t of this.integrantes) {
+    //       if(t.tareas.length === 0){
+    //           this
+    //       }
+    //   }
+    //   for(let i = 0; i < this.integrantes.length; i++){
+    //       if(this.integrantes[i].tareas.length === 0){
+    //         this.integrantes[i].tareas.push('Sin tarea asiganada')
+    //       }
+    //   }
+    } else if ( this.integrantes.length < this.tareas.length){
 
-    } else {
-      console.log('leandro');
+      for (let i  = 0; i < this.tareas.length  ; i++){
 
-      for (let i  = 0; i <= this.integrantes.length -1  ; i++){
-
-          if(i === this.integrantes.length - 1){
-            this.integrantes[i].tareas.push(this.tareas[i])
+        //   if(i === this.integrantes.length - 1){
+        //     this.integrantes[i].tareas.push(this.tareas[this.indice])
+        //     this.indice = i;
+        //     i = 0;
+        //   }else{
+        //     this.integrantes[i].tareas.push(this.tareas[i + this.indice + 1])
+        //   }
+        if( i > this.integrantes.length - 1){
             this.indice = i;
-            i = 0;
-          }else{
-            this.integrantes[i].tareas.push(this.tareas[i + this.indice + 1])
-          }
+            i= 0
+        }
+        if( i <= this.integrantes.length -1 && this.indice === 0){
+            this.integrantes[i].tareas.push(this.tareas[i])
+        }else{
+            this.integrantes[i].tareas.push(this.tareas[i + this.indice])
+        }
+        
 
       }
       
 
     }
     
-    this.sorteado = this.integrantes
+    this.sorteado = this.intPrueba
 
     return this.sorteado
 
