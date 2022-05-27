@@ -9,6 +9,7 @@ import { IntegrantesService } from './services/integrantesService.service';
 import { TareasService } from './services/tareasService.service';
 import { TareasComponent } from './tareas/tareas/tareas.component';
 import { SorteoComponent } from './sorteo/sorteo/sorteo.component';
+import { SorteoService } from './services/sorteo.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { SorteoComponent } from './sorteo/sorteo/sorteo.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [IntegrantesService, TareasService],
+  providers: [IntegrantesService, TareasService, SorteoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

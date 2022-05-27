@@ -4,17 +4,7 @@ import { Persona } from "../interfaces/persona.interface";
 @Injectable()
 export class IntegrantesService{
 
-    integrantes: Persona[] = [
-        // {
-        //     nombre:'Leandro'
-        // },
-        // {
-        //     nombre:'Federico'
-        // },
-        // {
-        //     nombre:'Fabricio'
-        // }
-    ]
+    integrantes: Persona[] = []
 
     get getIntegrantes(): Persona[]{
         return this.integrantes
