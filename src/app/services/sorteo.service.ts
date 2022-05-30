@@ -35,8 +35,6 @@ export class SorteoService{
    
    
         if (this.integrantes.length >= this.tareas.length) {
-
-        console.log(this.integrantes.length - this.tareas.length);
         
         let resta = this.integrantes.length - this.tareas.length
         
@@ -52,54 +50,7 @@ export class SorteoService{
         
         }
 
-    } else if ( this.tareas.length > this.integrantes.length ){
-
-    //     for (let i  = 0; i < this.tareas.length  ; i++){
-
-    //     if( i > this.integrantes.length - 1){
-    //         this.indice = i;
-    //         i= 0
-    //     }
-    //     if( i <= this.integrantes.length -1 && this.indice === 0){
-    //         this.integrantes[i].tareas.push(this.tareas[i])
-    //     }else{
-    //         this.integrantes[i].tareas.push(this.tareas[i + this.indice])
-    //     }
-    //   }
-            for (let i = 0; i < this.tareas.length ; i++) {
-                
-                if(i < this.integrantes.length && this.aux == false){
-                    this.integrantes[i].tareas.push(this.tareas[i])
-                    this.indice++
-                    console.log('por aca esta la ' + i);
-                    
-                }else if(this.indice === this.integrantes.length ){
-                    // this.indice = i;
-
-                    if(this.aux ==false){
-                        i= 0;
-                    }
-                    this.aux = true
-
-                    let res = this.tareas.length - this.integrantes.length
-
-                    for(let i = 0; i < res; i++ ){
-
-                        this.integrantes[i].tareas.push(this.tareas[i + this.indice])
-                    console.log('fuera del if' + this.tareas[i], this.indice);
-
-                    }
-                    
-                    
-                    
-                }
-                
-             
-                
-            }
-                
-
-    }
+    } 
     
     this.sorteado = this.intPrueba
 

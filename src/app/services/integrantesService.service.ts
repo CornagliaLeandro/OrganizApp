@@ -14,9 +14,7 @@ export class IntegrantesService{
 
     }
     agregarP(per: Persona){
-        this.integrantes.push(per)
-        // console.log(this.integrantes);
-        
+        this.integrantes.push(per)        
     }
 
 
